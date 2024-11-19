@@ -1,0 +1,70 @@
+import random
+import time
+
+
+class Dog:
+
+    def __init__(self):
+        self.name = "orel"
+        self.age = 7
+
+    def birthday(self):
+        self.age += 1
+
+    def get_age(self):
+        return self.age
+
+
+class CrazyPlane:
+    def __init__(self, x=0, y=0, name="default"):
+        self.x = x
+        self.y = y
+        self.name = name
+
+    def update_pos(self):
+        if self.x >= 9:
+            self.x-=1
+        elif self.x <= -9:
+            self.x +=1
+        else:
+            self.x = self.x + random.randint(-1, 1)
+
+        if self.y >= 9:
+            self.y -= 1
+        elif self.y <= -9:
+            self.y +=1
+        else:
+            self.y = self.y + random.randint(-1, 1)
+
+
+
+    def get_position(self):
+        return self.x, self.y
+
+    def turn(self):
+        self.x+=2
+        self.y-=2
+
+    def avoid_colision(self,plane2):
+        if self.distance(plane2) <= 2:
+            print(f"almost-crasheddddddd ,distance was {self.distance(plane2)} saved!")
+            self.turn()
+            print(f"distance now {self.distance(plane2)}")
+    def flying(self):
+        print(f"{self} at: ")
+        self.update_pos()
+        x, y = self.get_position()
+        print(x, y)
+        time.sleep(1)
+
+    def distance(self, plane2):
+        return ((self.y - plane2.y) **2 + (self.x - plane2.x) **2) **0.5
+
+
+    def __str__(self):
+        return self.name
+
+
+
+
+

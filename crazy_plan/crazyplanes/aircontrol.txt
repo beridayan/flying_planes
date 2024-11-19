@@ -1,0 +1,15 @@
+from main import CrazyPlane
+import time
+planes = [CrazyPlane(0, 0, "plane1"), CrazyPlane(2, 3, "plane2"), CrazyPlane(-4, 6, "plane3")]
+
+
+def flying(plane):
+    print(f"{plane} at: ")
+    plane.update_pos()
+    x, y = plane.get_position()
+    print(x, y)
+    time.sleep(1)
+
+for i in range (20):
+    if ((planes[0].y - planes[1].y) **2 + (planes[0].x - planes[1].x) **2) **0.5 <= 2:
+        planes[0].turn()

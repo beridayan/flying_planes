@@ -1,0 +1,19 @@
+from main import CrazyPlane
+planes = [CrazyPlane(0, 0, "plane1"), CrazyPlane(0, 0, "plane2"), CrazyPlane(0, 0, "plane3")]
+
+
+
+for i in range (20):
+
+
+    planes[0].avoid_colision(planes[1])
+    planes[0].flying()
+
+    planes[1].avoid_colision(planes[2])
+    planes[1].flying()
+
+    planes[2].avoid_colision(planes[0])
+    planes[2].flying()
+
+
+
